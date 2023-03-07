@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Pagina de Salida</title>
+</head>
+<body>
+    <div class="container">
+
+    <%-include('partials/encabezado.html');%>
+
+    <% 
+			
+                var subtotal = 0;
+				var impuesto = 0;
+				var descuento = 0;
+				var total = 0;
+				var descuento = 0;
+                var kilowatC = 0;
+                var costo = 0;
+
+			if(tipo==="Tipo1"){
+				costo = 1.08;
+                tipo="Domicilio";
+
+				kilowatC = parseInt(kilowat, 10);
+                subtotal = kilowatC * costo;
+				impuesto = subtotal *.16;
+				if(kilowatC <= 1000){
+					descuento = subtotal * .10;
+				}else if(kilowatC > 1000 && kilowatC <= 10000){
+					descuento = subtotal * .20;
+				}else if(kilowatC > 10000){
+                    descuento = subtotal * .50
+                }
+				
+				total = subtotal + impuesto - descuento;
+			}else if(tipo==="Tipo2"){
+				costo = 2.5;
+                tipo="Comercial";
+
+				
+
+				kilowatC = parseInt(kilowat, 10);
+                subtotal = kilowatC * costo;
+				impuesto = subtotal *.16;
+				if(kilowatC <= 1000){
+					descuento = subtotal * .10;
+				}else if(kilowatC > 1000 && kilowatC <= 10000){
+					descuento = subtotal * .20;
+				}else if(kilowatC > 10000){
+                    descuento = subtotal * .50
+                }
+				
+				total = subtotal + impuesto - descuento;
+			}else if(tipo === "Tipo3"){
+                costo = 3;
+                tipo="Industrial";
+				
+
+				kilowatC = parseInt(kilowat, 10);
+                subtotal = kilowatC * costo;
+				impuesto = subtotal *.16;
+				if(kilowatC <= 1000){
+					descuento = subtotal * .10;
+				}else if(kilowatC > 1000 && kilowatC <= 10000){
+					descuento = subtotal * .20;
+				}else if(kilowatC > 10000){
+                    descuento = subtotal * .50
+                }
+				
+				total = subtotal + impuesto - descuento;
+            }
+
+            
+		%>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tipo de servicio</th>
+                    <th scope="col">Kilowatts consumidos</th>
+                    <th scope="col">Costo por Kilowatts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%=nomCliente%></td>
+                    <td><%=tipo%></td>
+                    <td><%=kilowat%></td>
+                    <td><%=costo%></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Subtotal</td>
+                    <td><%=subtotal%></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Impuesto</td>
+                    <td><%=impuesto%></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Descuento</td>
+                    <td><%=descuento%></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total a pagar</td>
+                    <td><%=total%></td>
+                </tr>
+            </tbody>
+        </table>
+
+    <%-include('partials/piePagina.html');%>
+
+    </div>
+    
+</body>
+</html>
