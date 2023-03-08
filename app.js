@@ -16,7 +16,7 @@ app.engine('html',require('ejs').renderFile)
 app.use((req,res,next)=>{
     res.status(404).sendFile(__dirname+'/public/error.html')
 })
-const puerto = 4000;
+const puerto = 3000;
 app.listen(puerto,()=>{
     console.log("Iniciado puerto.");
 });
