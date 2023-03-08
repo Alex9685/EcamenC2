@@ -84,9 +84,26 @@
             </tbody>
         </table>
 
+        <div class="row">
+            <div class="col m-2">
+                <button type="submit">Enviar información</button>
+                <button type="reset" class="" id="limpiar" onclick="limpiar()">Limpiar</button>
+            </div>
+            <div class="col">
+
+            </div>
+            
+        </div>
+
     <%-include('partials/piePagina.html');%>
 
     </div>
     
 </body>
 </html>
+<script>
+    let refresh = document.getElementById('limpiar');
+            refresh.addEventListener('click', _ => {
+                        location.href="http://34.217.132.91:3000/paginaEntrada";
+            });
+</script>
