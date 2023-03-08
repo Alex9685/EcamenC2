@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>Pagina de Salida</title>
 </head>
-<body>
+<body style="background-color: bisque;">
     <div class="container">
 
     <%-include('partials/encabezado.html');%>
@@ -16,82 +16,51 @@
 			
                 var subtotal = 0;
 				var impuesto = 0;
-				var descuento = 0;
 				var total = 0;
 				var descuento = 0;
-                var kilowatC = 0;
                 var costo = 0;
+              
 
-			if(tipo==="Tipo1"){
-				costo = 1.08;
-                tipo="Domicilio";
 
-				kilowatC = parseInt(kilowat, 10);
-                subtotal = kilowatC * costo;
-				impuesto = subtotal *.16;
-				if(kilowatC <= 1000){
-					descuento = subtotal * .10;
-				}else if(kilowatC > 1000 && kilowatC <= 10000){
-					descuento = subtotal * .20;
-				}else if(kilowatC > 10000){
-                    descuento = subtotal * .50
-                }
-				
-				total = subtotal + impuesto - descuento;
-			}else if(tipo==="Tipo2"){
-				costo = 2.5;
-                tipo="Comercial";
+			if(tipo==="Lic"){
+				subtotal = kilowat * 1.2 * diat;
+                impuesto = subtotal * .16;
+                total = subtotal - impuesto; 
 
-				
+                
+			}else if(tipo==="Maestria"){
+				subtotal = kilowat * 1.5 * diat;
+                impuesto = subtotal * .16;
+                total = subtotal - impuesto; 
 
-				kilowatC = parseInt(kilowat, 10);
-                subtotal = kilowatC * costo;
-				impuesto = subtotal *.16;
-				if(kilowatC <= 1000){
-					descuento = subtotal * .10;
-				}else if(kilowatC > 1000 && kilowatC <= 10000){
-					descuento = subtotal * .20;
-				}else if(kilowatC > 10000){
-                    descuento = subtotal * .50
-                }
-				
-				total = subtotal + impuesto - descuento;
-			}else if(tipo === "Tipo3"){
-                costo = 3;
-                tipo="Industrial";
-				
-
-				kilowatC = parseInt(kilowat, 10);
-                subtotal = kilowatC * costo;
-				impuesto = subtotal *.16;
-				if(kilowatC <= 1000){
-					descuento = subtotal * .10;
-				}else if(kilowatC > 1000 && kilowatC <= 10000){
-					descuento = subtotal * .20;
-				}else if(kilowatC > 10000){
-                    descuento = subtotal * .50
-                }
-				
-				total = subtotal + impuesto - descuento;
+			}else if(tipo === "Doctorado"){
+               	subtotal = kilowat * 2  * diat;
+                impuesto = subtotal * .16;
+                total = subtotal - impuesto; 
+                 
             }
 
             
 		%>
-        <table class="table">
+        <table class="table" style="background-color: rgb(77, 139, 219);">
             <thead>
                 <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Tipo de servicio</th>
-                    <th scope="col">Kilowatts consumidos</th>
-                    <th scope="col">Costo por Kilowatts</th>
+                    <th scope="col">Numero Contrato:</th>
+                    <th scope="col">Nombre empleado:</th>
+                    <th scope="col">Domicilio:</th>
+                    <th scope="col">Nivel de estudios:</th>
+                    <th scope="col">Pago Diario:</th>
+                    <th scope="col">Dias trabajados</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td><%=numRecibo%></td>
                     <td><%=nomCliente%></td>
+                    <td><%=domicilio%></td>
                     <td><%=tipo%></td>
                     <td><%=kilowat%></td>
-                    <td><%=costo%></td>
+                    <td><%=diat%></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -104,12 +73,6 @@
                     <td></td>
                     <td>Impuesto</td>
                     <td><%=impuesto%></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Descuento</td>
-                    <td><%=descuento%></td>
                 </tr>
                 <tr>
                     <td></td>

@@ -16,7 +16,8 @@ router.get("/paginaEntrada",(req,res)=>{
 		total: req.query.total,
 		descuento: req.query.descuento,
         kilowatC: req.query.kilowatC,
-        costo : req.query.costo
+        costo : req.query.costo,
+        diat : req.query.diat
     }
     
 
@@ -38,7 +39,8 @@ router.post("/paginaEntrada",(req,res)=>{
 		total: req.body.total,
 		descuento: req.body.descuento,
         kilowatC: req.body.kilowatC,
-        costo : req.body.costo
+        costo : req.body.costo,
+        diat : req.body.diat
     }
     
     res.render('paginaSalida.html',valores)
@@ -60,7 +62,8 @@ router.get("/paginaSalida",(req,res)=>{
 		total: req.query.total,
 		descuento: req.query.descuento,
         kilowatC: req.query.kilowatC,
-        costo : req.query.costo
+        costo : req.query.costo,
+        diat : req.query.diat
     }
     
 
@@ -82,7 +85,8 @@ router.post("/paginaSalida",(req,res)=>{
 		total: req.body.total,
 		descuento: req.body.descuento,
         kilowatC: req.body.kilowatC,
-        costo : req.body.costo
+        costo : req.body.costo,
+        diat : req.body.diat
     }
     
 
